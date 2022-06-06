@@ -2,13 +2,13 @@
 
 Work in progress Hydbrid RSA-AES encrypted session (reverse-shell)
 
-  Current Features
+  Current Features:
   
       -encrypted communication between server and client
   
       -2 way file transfer
       
-  To-do
+  To-do:
   
       -obfuscation
       -better key-handling
