@@ -74,6 +74,7 @@ def connect():
             print('\n\t[!] Nuking connection\n')
             conn.send(encrypt(command.encode()))
             sleep(1.5)
+            print('\t[!] Goodbye...\n')
             conn.close()
             break
         elif command == 'clear':
