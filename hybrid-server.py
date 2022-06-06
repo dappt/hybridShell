@@ -62,7 +62,7 @@ def connect():
         f.close()
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(('192.168.0.16', 8080))
+    s.bind(('192.168.0.174', 8080))
     s.listen(1)
     print('[+] Listening for incoming TCP connections on port 8080')
     conn, addr = s.accept()
