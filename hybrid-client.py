@@ -80,7 +80,7 @@ def decrypt(cipher):
 def connect():
     
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(('192.168.0.16', 8080))
+    s.connect(('192.168.0.174', 8080))
     global AES_KEY
     AES_KEY = s.recv(1024)
     AES_KEY = GET_AES(AES_KEY)
