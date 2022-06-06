@@ -1,6 +1,6 @@
 # hybridShell
 
-    -Work in progress Hydbrid RSA-AES encrypted session (reverse-shell)
+      -Work in progress Hydbrid RSA-AES encrypted session (reverse-shell)
 
   Current Features:
   
